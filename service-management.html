@@ -1,0 +1,382 @@
+<title>Account Management — Sofiia Chernyshova</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap">
+
+<style>
+:root{--bg:#F7F4F0;--bg-alt:#EDEAE4;--fg:#1C1A18;--fg-muted:#6B6560;--accent:#7B1F3A;--accent-light:#C4728A;--border:rgba(28,26,24,0.12);--font-display:'Cormorant Garamond',Georgia,serif;--font-body:'DM Sans',system-ui,sans-serif;color-scheme:light;}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#181614;--bg-alt:#221F1C;--fg:#F0EDE8;--fg-muted:#9A948D;--accent:#D4657A;--accent-light:#7B1F3A;--border:rgba(240,237,232,0.10);color-scheme:dark;}}
+:root[data-theme="dark"]{--bg:#181614;--bg-alt:#221F1C;--fg:#F0EDE8;--fg-muted:#9A948D;--accent:#D4657A;--accent-light:#7B1F3A;--border:rgba(240,237,232,0.10);color-scheme:dark;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;position:relative;}
+body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 60% 40% at 15% 20%,rgba(123,31,58,0.07) 0%,transparent 60%),radial-gradient(ellipse 50% 60% at 85% 75%,rgba(196,114,138,0.06) 0%,transparent 55%),radial-gradient(ellipse 40% 50% at 60% 10%,rgba(123,31,58,0.04) 0%,transparent 50%),radial-gradient(ellipse 70% 30% at 30% 90%,rgba(196,114,138,0.05) 0%,transparent 60%);}
+nav,section,.sp-hero,.cta-banner,.faq-section,footer{position:relative;z-index:1;}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding-block:14px;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px));}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:101;background:var(--bg);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.nav-logo{font-family:var(--font-display);font-size:1.25rem;font-weight:400;letter-spacing:0.04em;color:var(--fg);text-decoration:none;}
+.nav-right{display:flex;align-items:center;gap:20px;}
+.nav-links{display:flex;gap:24px;list-style:none;}
+.nav-links a{font-size:0.8rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--fg-muted);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--fg);}
+.lang-switcher{display:flex;gap:4px;background:var(--bg-alt);border-radius:20px;padding:3px;}
+.lang-btn{border:none;background:transparent;color:var(--fg-muted);font-family:var(--font-body);font-size:0.7rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;padding:4px 10px;border-radius:16px;cursor:pointer;transition:background 0.2s,color 0.2s;}
+.lang-btn.active{background:var(--fg);color:var(--bg);}
+.sp-hero{padding-block:72px 56px;border-bottom:1px solid var(--border);max-width:1100px;margin:0 auto;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px));}
+.sp-eyebrow{font-size:0.72rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;}
+.sp-title{font-family:var(--font-display);font-size:clamp(2.4rem,7vw,5rem);font-weight:300;line-height:1.05;letter-spacing:-0.01em;text-wrap:balance;margin-bottom:20px;}
+.sp-price{font-family:var(--font-display);font-size:clamp(1.2rem,3vw,1.8rem);font-weight:300;color:var(--accent);margin-bottom:12px;}
+.sp-price-note{font-size:0.82rem;color:var(--fg-muted);margin-bottom:32px;}
+.sp-cta{display:inline-block;background:var(--fg);color:var(--bg);font-family:var(--font-body);font-size:0.8rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;padding:14px 32px;border-radius:2px;transition:opacity 0.2s;margin-right:12px;}
+.sp-cta:hover{opacity:0.8;}
+.sp-cta-soft{display:inline-block;font-size:0.8rem;font-weight:500;letter-spacing:0.06em;color:var(--accent);text-decoration:none;padding:14px 4px;transition:opacity 0.2s;}
+.sp-cta-soft:hover{opacity:0.7;}
+.section{max-width:1100px;margin:0 auto;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px));padding-block:72px;border-bottom:1px solid var(--border);}
+.section-label{font-size:0.72rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
+.section-title{font-family:var(--font-display);font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:300;line-height:1.2;text-wrap:balance;margin-bottom:40px;}
+.includes-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:24px;}
+.include-item{background:var(--bg-alt);border:1px solid var(--border);padding:24px;border-radius:2px;}
+.include-icon{font-size:1.4rem;margin-bottom:12px;}
+.include-label{font-size:0.85rem;font-weight:500;color:var(--fg);margin-bottom:6px;}
+.include-desc{font-size:0.82rem;color:var(--fg-muted);line-height:1.6;}
+.detail-list{display:grid;gap:0;}
+.detail-row{display:grid;grid-template-columns:1fr 2fr;gap:24px;padding:16px 0;border-bottom:1px solid var(--border);align-items:baseline;}
+.detail-row:first-child{border-top:1px solid var(--border);}
+.detail-key{font-size:0.78rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--fg-muted);}
+.detail-val{font-size:0.92rem;color:var(--fg);line-height:1.6;}
+.for-whom-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
+.for-list{list-style:none;display:grid;gap:12px;}
+.for-list li{display:flex;gap:12px;font-size:0.92rem;color:var(--fg-muted);line-height:1.6;}
+.for-list li::before{content:"—";color:var(--accent);flex-shrink:0;}
+.result-text{font-size:1rem;color:var(--fg-muted);line-height:1.8;max-width:680px;}
+.result-text strong{color:var(--fg);font-weight:500;}
+/* Process steps */
+.process-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:24px;counter-reset:step;}
+.process-step{padding:24px;border:1px solid var(--border);border-radius:2px;counter-increment:step;position:relative;}
+.process-step::before{content:counter(step);position:absolute;top:16px;right:16px;font-family:var(--font-display);font-size:1.8rem;font-weight:300;color:var(--accent);opacity:0.3;line-height:1;}
+.process-label{font-size:0.85rem;font-weight:500;color:var(--fg);margin-bottom:6px;}
+.process-desc{font-size:0.8rem;color:var(--fg-muted);line-height:1.6;}
+/* Intro call note */
+.intro-note{display:flex;gap:16px;align-items:flex-start;background:var(--bg-alt);border:1px solid var(--border);border-left:3px solid var(--accent);padding:20px 24px;margin-bottom:40px;}
+.intro-note-icon{font-size:1.1rem;flex-shrink:0;margin-top:2px;}
+.intro-note-text{font-size:0.88rem;color:var(--fg-muted);line-height:1.6;}
+.intro-note-text strong{color:var(--fg);font-weight:500;}
+.faq-section{max-width:1100px;margin:0 auto;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px));padding-block:72px;border-bottom:1px solid var(--border);}
+.faq-list{margin-top:40px;border-top:1px solid var(--border);}
+.faq-item{border-bottom:1px solid var(--border);}
+.faq-q{width:100%;background:none;border:none;text-align:left;font-family:var(--font-body);font-size:0.95rem;font-weight:500;color:var(--fg);padding:20px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;transition:color 0.2s;}
+.faq-q:hover{color:var(--accent);}
+.faq-icon{font-size:1.2rem;font-weight:300;color:var(--accent);flex-shrink:0;transition:transform 0.25s;line-height:1;}
+.faq-item.open .faq-icon{transform:rotate(45deg);}
+.faq-a{font-size:0.9rem;color:var(--fg-muted);line-height:1.75;padding-bottom:20px;display:none;max-width:680px;}
+.faq-item.open .faq-a{display:block;}
+.cta-banner{background:var(--accent);color:#fff;padding-block:48px;}
+.cta-banner-inner{max-width:1100px;margin:0 auto;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px));display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;}
+.cta-banner-text h3{font-family:var(--font-display);font-size:clamp(1.4rem,3vw,2rem);font-weight:300;margin-bottom:8px;}
+.cta-banner-text p{font-size:0.92rem;opacity:0.85;max-width:480px;line-height:1.6;}
+.cta-banner-btn{display:inline-block;background:#fff;color:var(--accent);font-family:var(--font-body);font-size:0.8rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;padding:14px 32px;border-radius:2px;white-space:nowrap;transition:opacity 0.2s;flex-shrink:0;}
+.cta-banner-btn:hover{opacity:0.88;}
+footer{padding-block:32px;border-top:1px solid var(--border);}
+.footer-inner{max-width:1100px;margin:0 auto;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px));display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.footer-copy{font-size:0.78rem;color:var(--fg-muted);}
+.footer-loc{font-size:0.78rem;color:var(--fg-muted);}
+@media(max-width:700px){.for-whom-grid{grid-template-columns:1fr;}.detail-row{grid-template-columns:1fr;gap:4px;}.nav-links{display:none;}}
+</style>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">Sofiia Chernyshova</a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="index.html#services" data-i18n="nav.services">Services</a></li>
+        <li><a href="index.html#about" data-i18n="nav.about">About</a></li>
+        <li><a href="index.html#contact" data-i18n="nav.contact">Contact</a></li>
+      </ul>
+      <div class="lang-switcher">
+        <button class="lang-btn" data-lang="uk">UK</button>
+        <button class="lang-btn" data-lang="ru">RU</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="sp-hero">
+  <p class="sp-eyebrow" data-i18n="srv.label">Service</p>
+  <h1 class="sp-title" data-i18n="sp.title"></h1>
+  <p class="sp-price" data-i18n="sp.price"></p>
+  <p class="sp-price-note" data-i18n="sp.price.note"></p>
+  <a href="https://t.me/chernysshovaa2" target="_blank" class="sp-cta" data-i18n="sp.cta">Book intro call</a>
+  <a href="https://t.me/chernysshovaa2" target="_blank" class="sp-cta-soft" data-i18n="sp.cta.soft">or write a question →</a>
+</div>
+
+<section class="section">
+  <p class="section-label" data-i18n="sp.inc.label">What's included</p>
+  <h2 class="section-title" data-i18n="sp.inc.title">Full account management</h2>
+  <div id="intro-note" class="intro-note"></div>
+  <div class="includes-grid" id="includes-grid"></div>
+</section>
+
+<section class="section">
+  <p class="section-label" data-i18n="sp.proc.label">How we start</p>
+  <h2 class="section-title" data-i18n="sp.proc.title">The process</h2>
+  <div class="process-grid" id="process-grid"></div>
+</section>
+
+<section class="section">
+  <p class="section-label" data-i18n="sp.det.label">Details</p>
+  <h2 class="section-title" data-i18n="sp.det.title">Conditions</h2>
+  <div class="detail-list" id="detail-list"></div>
+</section>
+
+<section class="section">
+  <div class="for-whom-grid">
+    <div>
+      <p class="section-label" data-i18n="sp.for.label">For whom</p>
+      <h2 class="section-title" data-i18n="sp.for.title">Is this for you?</h2>
+    </div>
+    <ul class="for-list" id="for-list"></ul>
+  </div>
+</section>
+
+<section class="section">
+  <p class="section-label" data-i18n="sp.res.label">Result</p>
+  <h2 class="section-title" data-i18n="sp.res.title">What you get</h2>
+  <p class="result-text" id="result-text"></p>
+</section>
+
+<div class="faq-section">
+  <p class="section-label" data-i18n="faq.label">FAQ</p>
+  <h2 class="section-title" data-i18n="faq.sp.title">About management</h2>
+  <div class="faq-list" id="sp-faq-list"></div>
+</div>
+
+<div class="faq-section">
+  <p class="section-label" data-i18n="faq.gen.label">General</p>
+  <h2 class="section-title" data-i18n="faq.gen.title">Common questions</h2>
+  <div class="faq-list" id="gen-faq-list"></div>
+</div>
+
+<div class="cta-banner">
+  <div class="cta-banner-inner">
+    <div class="cta-banner-text">
+      <h3 data-i18n="cta.banner.title">Ready to hand it off?</h3>
+      <p data-i18n="cta.banner.desc">Book a free intro call — no commitment needed.</p>
+    </div>
+    <a href="https://t.me/chernysshovaa2" target="_blank" class="cta-banner-btn" data-i18n="cta.banner.btn">Book free call</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Sofiia Chernyshova</span>
+    <span class="footer-loc" data-i18n="footer.loc">Prague · Social Media Marketing</span>
+  </div>
+</footer>
+
+<script>
+const STRINGS={
+en:{
+  "nav.services":"Services","nav.about":"About","nav.contact":"Contact",
+  "srv.label":"Service","sp.title":"Account Management",
+  "sp.price":"from 10,000 CZK / month",
+  "sp.price.note":"Exact price depends on scope — discussed at the intro call",
+  "sp.cta":"Book free intro call","sp.cta.soft":"or write a question →",
+  "sp.inc.label":"What's included","sp.inc.title":"Full account management",
+  "sp.proc.label":"How we start","sp.proc.title":"The process",
+  "sp.det.label":"Details","sp.det.title":"Conditions",
+  "sp.for.label":"For whom","sp.for.title":"Is this for you?",
+  "sp.res.label":"Result","sp.res.title":"What you get",
+  "faq.label":"FAQ","faq.sp.title":"About management",
+  "faq.gen.label":"General","faq.gen.title":"Common questions",
+  "cta.banner.title":"Ready to hand it off?",
+  "cta.banner.desc":"Book a free intro call — we'll map out exactly what your account needs. No commitment.",
+  "cta.banner.btn":"Book free call","footer.loc":"Prague · Social Media Marketing",
+  "intro.note":"<strong>We start with a free intro call.</strong> No contracts signed, no payment made — just a conversation to understand your goals and figure out if we're the right fit.",
+  includes:[
+    {icon:"📸",label:"2 photo shoots / month",desc:"1.5–2h each, or one longer 4h session — flexible to your schedule"},
+    {icon:"✍️",label:"Content strategy",desc:"Clear direction for what to post, why, and when"},
+    {icon:"🎬",label:"Reels & posts",desc:"Full production: scripts, filming, editing, captions"},
+    {icon:"📊",label:"Monthly stats report",desc:"Numbers shared monthly or every 3 months so you always know what's working"},
+    {icon:"💬",label:"Community management",desc:"Responding to comments and DMs as part of the service"},
+    {icon:"📋",label:"Content plan",desc:"Planned calendar of posts so nothing falls through the cracks"}
+  ],
+  process:[
+    {label:"Intro call",desc:"Free 30-min call to talk through your goals, current account state, and what you need"},
+    {label:"Account audit",desc:"We document the account 'before' — baseline for measuring future growth"},
+    {label:"Strategy",desc:"Build the content strategy, visual direction, and posting plan"},
+    {label:"Preparation period",desc:"Content prepared before the first post goes live"},
+    {label:"First posting date",desc:"Management officially starts — billing begins here"}
+  ],
+  details:[
+    {k:"Price",v:"From 10,000 CZK / month — exact price set at intro call"},
+    {k:"Contract",v:"1, 3, 6 or 12 months — whatever works for you"},
+    {k:"Payment",v:"100% monthly, or 50% at signing + 50% after the first week"},
+    {k:"Shoots",v:"2× / month (1.5–2h each) or 1× / month (4h)"},
+    {k:"Posting",v:"You give access to post, or you post yourself from the plan"},
+    {k:"Revisions",v:"3 rounds included, then charged separately"},
+    {k:"Pause",v:"1 month's notice required; can't leave same day"}
+  ],
+  forWhom:[
+    "Businesses and personal brands who want to grow on Instagram or TikTok",
+    "Accounts starting from zero — we build from scratch",
+    "Niches without a clear direction — we figure it out together",
+    "Those who've been posting inconsistently and want a system",
+    "Anyone who wants to hand off social media completely"
+  ],
+  result:"Your social media runs — <strong>consistently, strategically, without you thinking about it</strong>. You get a growing account with content that reflects your brand. First signs of growth appear stage by stage; broader results come after 3 months of consistent work.",
+  spFaq:[
+    {q:"How long before I see results?",a:"Growth happens stage by stage — you'll see initial changes in engagement and content quality quickly. Broader account growth typically becomes visible after 3 months of consistent work. We walk through the timeline at the intro call."},
+    {q:"What if I have zero followers or a brand new account?",a:"No problem at all. We work with accounts starting from scratch."},
+    {q:"What if I don't have a clear niche?",a:"That's fine too. We figure it out together — some accounts work as a lifestyle or personal brand without a fixed niche."},
+    {q:"How does posting work — do I give you access?",a:"You choose: you can give access so the team posts directly, or you post the content yourself following the ready plan."},
+    {q:"Can I pause the collaboration?",a:"Yes. One month's notice is required. You can't leave the same day without covering the next month."},
+    {q:"Who actually does the work?",a:"Each part of the process — filming, editing, writing, strategy — is handled by a dedicated specialist. I'm responsible for the overall strategy and oversee everything from start to finish."},
+    {q:"When does billing start?",a:"From the first posting date. There's a preparation period before that — content is being built, strategy finalised — but billing begins when management officially starts."}
+  ],
+  genFaq:[
+    {q:"How does payment work?",a:"Any convenient method: Ukrainian FOP (bank transfer), cash, or a monthly invoice via Way for Pay."},
+    {q:"Do I need to sign a contract?",a:"Yes, a simple contract that makes the collaboration comfortable for both sides."},
+    {q:"Can the scope be adjusted mid-contract?",a:"Yes. If you need to add or remove something, we discuss it and recalculate the price together."}
+  ]
+},
+ru:{
+  "nav.services":"Услуги","nav.about":"Обо мне","nav.contact":"Контакты",
+  "srv.label":"Услуга","sp.title":"Ведение аккаунта",
+  "sp.price":"от 10 000 CZK / месяц",
+  "sp.price.note":"Точная стоимость зависит от объёма — обсуждается на вводном звонке",
+  "sp.cta":"Записаться на звонок","sp.cta.soft":"или написать вопрос →",
+  "sp.inc.label":"Что входит","sp.inc.title":"Полное ведение аккаунта",
+  "sp.proc.label":"Как мы начинаем","sp.proc.title":"Процесс",
+  "sp.det.label":"Детали","sp.det.title":"Условия",
+  "sp.for.label":"Для кого","sp.for.title":"Это для вас?",
+  "sp.res.label":"Результат","sp.res.title":"Что вы получите",
+  "faq.label":"FAQ","faq.sp.title":"О ведении",
+  "faq.gen.label":"Общее","faq.gen.title":"Частые вопросы",
+  "cta.banner.title":"Готовы передать?",
+  "cta.banner.desc":"Запишитесь на бесплатный вводный звонок — без обязательств.",
+  "cta.banner.btn":"Записаться на звонок","footer.loc":"Прага · SMM",
+  "intro.note":"<strong>Начинаем с бесплатного вводного звонка.</strong> Никаких договоров и оплат — просто разговор, чтобы понять ваши цели и понять, подходим ли мы друг другу.",
+  includes:[
+    {icon:"📸",label:"2 съёмки в месяц",desc:"По 1.5–2 часа каждая или одна 4-часовая — гибко под ваш график"},
+    {icon:"✍️",label:"Контент-стратегия",desc:"Чёткое направление: что постить, зачем и когда"},
+    {icon:"🎬",label:"Reels и посты",desc:"Полное производство: сценарии, съёмка, монтаж, подписи"},
+    {icon:"📊",label:"Ежемесячный отчёт по статистике",desc:"Цифры ежемесячно или раз в 3 месяца — всегда знаете, что работает"},
+    {icon:"💬",label:"Комьюнити-менеджмент",desc:"Ответы на комментарии и сообщения как часть услуги"},
+    {icon:"📋",label:"Контент-план",desc:"Плановый календарь публикаций, чтобы ничего не упустить"}
+  ],
+  process:[
+    {label:"Вводный звонок",desc:"Бесплатный 30-минутный звонок: цели, текущее состояние аккаунта и что вам нужно"},
+    {label:"Аудит аккаунта",desc:"Фиксируем состояние аккаунта «до» — база для измерения роста"},
+    {label:"Стратегия",desc:"Строим контент-стратегию, визуальное направление и план публикаций"},
+    {label:"Подготовительный период",desc:"Контент готовится до выхода первого поста"},
+    {label:"Дата первого поста",desc:"Ведение официально стартует — с этого момента начинается оплата"}
+  ],
+  details:[
+    {k:"Стоимость",v:"От 10 000 CZK / месяц — точная цена на вводном звонке"},
+    {k:"Договор",v:"1, 3, 6 или 12 месяцев — как удобно"},
+    {k:"Оплата",v:"100% в месяц или 50% при подписании + 50% после первой недели"},
+    {k:"Съёмки",v:"2 раза в месяц (1.5–2 ч каждая) или 1 раз в месяц (4 ч)"},
+    {k:"Публикации",v:"Вы даёте доступ или публикуете сами по готовому плану"},
+    {k:"Правки",v:"3 раунда включены, далее оплачиваются отдельно"},
+    {k:"Пауза",v:"Уведомление за 1 месяц; нельзя уйти в тот же день"}
+  ],
+  forWhom:[
+    "Бизнесы и личные бренды, которые хотят расти в Instagram или TikTok",
+    "Аккаунты с нуля — строим с чистого листа",
+    "Ниши без чёткого направления — разбираемся вместе",
+    "Те, кто постил нестабильно и хочет выстроить систему",
+    "Те, кто хочет полностью делегировать социальные сети"
+  ],
+  result:"Ваши социальные сети работают — <strong>стабильно, стратегически, без ваших усилий</strong>. Вы получаете растущий аккаунт с контентом, отражающим ваш бренд. Первые признаки роста появляются поэтапно; более широкие результаты — после 3 месяцев стабильной работы.",
+  spFaq:[
+    {q:"Как скоро будет результат?",a:"Рост происходит поэтапно — изменения в вовлечённости и качестве контента заметны быстро. Более широкий рост аккаунта обычно виден после 3 месяцев стабильной работы. На вводном звонке разбираем таймлайн подробно."},
+    {q:"Если у меня ноль подписчиков или совсем новый аккаунт?",a:"Без проблем. Работаем с аккаунтами с нуля."},
+    {q:"Если у меня нет чёткой ниши?",a:"Тоже не проблема. Разбираемся вместе — некоторые аккаунты работают как лайфстайл или личный бренд без фиксированной ниши."},
+    {q:"Как работают публикации — нужно давать доступ?",a:"На ваш выбор: можно дать доступ, чтобы команда публиковала напрямую, или вы публикуете контент сами по готовому плану."},
+    {q:"Можно ли поставить сотрудничество на паузу?",a:"Да. Нужно уведомить за 1 месяц. Нельзя уйти в тот же день без оплаты следующего месяца."},
+    {q:"Кто выполняет работу?",a:"Каждый процесс — съёмка, монтаж, тексты, стратегия — закрыт профильным специалистом. Я отвечаю за общую стратегию и контролирую всё от начала до конца."},
+    {q:"С какого момента начинается оплата?",a:"С даты первого поста. До этого идёт подготовительный период — создаётся контент, финализируется стратегия — но оплата начинается с официального старта ведения."}
+  ],
+  genFaq:[
+    {q:"Как происходит оплата?",a:"Любым удобным способом: оплата на украинский ФОП, наличными или ссылка на оплату через Way for Pay."},
+    {q:"Нужен ли договор?",a:"Да, простой договор, который делает сотрудничество комфортным для обеих сторон."},
+    {q:"Можно скорректировать объём в середине договора?",a:"Да. Если нужно что-то добавить или убрать, обсуждаем и пересчитываем стоимость вместе."}
+  ]
+},
+uk:{
+  "nav.services":"Послуги","nav.about":"Про мене","nav.contact":"Контакти",
+  "srv.label":"Послуга","sp.title":"Ведення акаунту",
+  "sp.price":"від 10 000 CZK / місяць",
+  "sp.price.note":"Точна вартість залежить від обсягу — обговорюємо на вступному дзвінку",
+  "sp.cta":"Записатися на дзвінок","sp.cta.soft":"або написати запитання →",
+  "sp.inc.label":"Що входить","sp.inc.title":"Повне ведення акаунту",
+  "sp.proc.label":"Як ми починаємо","sp.proc.title":"Процес",
+  "sp.det.label":"Деталі","sp.det.title":"Умови",
+  "sp.for.label":"Для кого","sp.for.title":"Це для вас?",
+  "sp.res.label":"Результат","sp.res.title":"Що ви отримаєте",
+  "faq.label":"FAQ","faq.sp.title":"Про ведення",
+  "faq.gen.label":"Загальне","faq.gen.title":"Часті запитання",
+  "cta.banner.title":"Готові передати?",
+  "cta.banner.desc":"Запишіться на безкоштовний вступний дзвінок — без жодних зобов'язань.",
+  "cta.banner.btn":"Записатися на дзвінок","footer.loc":"Прага · SMM",
+  "intro.note":"<strong>Починаємо з безкоштовного вступного дзвінку.</strong> Ніяких договорів та оплат — просто розмова, щоб зрозуміти ваші цілі та зрозуміти, чи підходимо одне одному.",
+  includes:[
+    {icon:"📸",label:"2 зйомки на місяць",desc:"По 1.5–2 год кожна або одна 4-годинна — гнучко під ваш графік"},
+    {icon:"✍️",label:"Контент-стратегія",desc:"Чіткий напрямок: що постити, навіщо і коли"},
+    {icon:"🎬",label:"Reels і пости",desc:"Повне виробництво: сценарії, зйомка, монтаж, підписи"},
+    {icon:"📊",label:"Щомісячний звіт зі статистики",desc:"Цифри щомісяця або раз на 3 місяці — завжди знаєте, що працює"},
+    {icon:"💬",label:"Комʼюніті-менеджмент",desc:"Відповіді на коментарі та повідомлення як частина послуги"},
+    {icon:"📋",label:"Контент-план",desc:"Плановий календар публікацій, щоб нічого не випустити"}
+  ],
+  process:[
+    {label:"Вступний дзвінок",desc:"Безкоштовний 30-хв дзвінок: цілі, поточний стан акаунту і що вам потрібно"},
+    {label:"Аудит акаунту",desc:"Фіксуємо стан акаунту «до» — база для вимірювання зростання"},
+    {label:"Стратегія",desc:"Будуємо контент-стратегію, візуальний напрямок і план публікацій"},
+    {label:"Підготовчий період",desc:"Контент готується до виходу першого посту"},
+    {label:"Дата першого посту",desc:"Ведення офіційно стартує — з цього моменту починається оплата"}
+  ],
+  details:[
+    {k:"Вартість",v:"Від 10 000 CZK / місяць — точна ціна на вступному дзвінку"},
+    {k:"Договір",v:"1, 3, 6 або 12 місяців — як зручно"},
+    {k:"Оплата",v:"100% на місяць або 50% при підписанні + 50% після першого тижня"},
+    {k:"Зйомки",v:"2 рази на місяць (1.5–2 год кожна) або 1 раз на місяць (4 год)"},
+    {k:"Публікації",v:"Ви даєте доступ або публікуєте самі за готовим планом"},
+    {k:"Правки",v:"3 раунди включені, далі оплачуються окремо"},
+    {k:"Пауза",v:"Повідомлення за 1 місяць; не можна піти в той самий день"}
+  ],
+  forWhom:[
+    "Бізнеси та особисті бренди, які хочуть рости в Instagram або TikTok",
+    "Акаунти з нуля — будуємо з чистого аркуша",
+    "Ніші без чіткого напрямку — розбираємося разом",
+    "Ті, хто постив нестабільно і хоче вибудувати систему",
+    "Ті, хто хоче повністю делегувати соціальні мережі"
+  ],
+  result:"Ваші соціальні мережі працюють — <strong>стабільно, стратегічно, без ваших зусиль</strong>. Ви отримуєте акаунт, що зростає, з контентом, що відображає ваш бренд. Перші ознаки зростання зʼявляються поетапно; ширші результати — після 3 місяців стабільної роботи.",
+  spFaq:[
+    {q:"Як скоро буде результат?",a:"Зростання відбувається поетапно — зміни у залученості та якості контенту помітні швидко. Ширше зростання акаунту зазвичай видно після 3 місяців стабільної роботи. На вступному дзвінку розбираємо таймлайн детально."},
+    {q:"Якщо у мене нуль підписників або зовсім новий акаунт?",a:"Без проблем. Працюємо з акаунтами з нуля."},
+    {q:"Якщо у мене немає чіткої ніші?",a:"Теж не проблема. Розбираємося разом — деякі акаунти працюють як лайфстайл або особистий бренд без фіксованої ніші."},
+    {q:"Як працюють публікації — потрібно давати доступ?",a:"На ваш вибір: можна дати доступ, щоб команда публікувала напряму, або ви публікуєте контент самі за готовим планом."},
+    {q:"Чи можна поставити співпрацю на паузу?",a:"Так. Потрібно повідомити за 1 місяць. Не можна піти в той самий день без оплати наступного місяця."},
+    {q:"Хто виконує роботу?",a:"Кожен процес — зйомка, монтаж, тексти, стратегія — закритий профільним спеціалістом. Я відповідаю за загальну стратегію і контролюю все від початку до кінця."},
+    {q:"З якого моменту починається оплата?",a:"З дати першого посту. До цього йде підготовчий період — створюється контент, фіналізується стратегія — але оплата починається з офіційного старту ведення."}
+  ],
+  genFaq:[
+    {q:"Як відбувається оплата?",a:"Будь-яким зручним способом: оплата на українське ФОП, готівкою або посилання на оплату через Way for Pay."},
+    {q:"Потрібен договір?",a:"Так, простий договір, який робить співпрацю комфортною для обох сторін."},
+    {q:"Чи можна скоригувати обсяг в середині договору?",a:"Так. Якщо потрібно щось додати або прибрати, обговорюємо і перераховуємо вартість разом."}
+  ]
+}
+};
+let lang=localStorage.getItem('sc-lang')||'uk';
+function t(k){return(STRINGS[lang]&&STRINGS[lang][k])||STRINGS.en[k]||k;}
+function d(k){return(STRINGS[lang]&&STRINGS[lang][k])||STRINGS.en[k]||[];}
+function applyLang(l){lang=l;localStorage.setItem('sc-lang',l);document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));document.querySelectorAll('[data-i18n]').forEach(el=>{el.innerHTML=t(el.dataset.i18n);});document.getElementById('intro-note').innerHTML=`<span class="intro-note-icon">☎️</span><span class="intro-note-text">${t('intro.note')}</span>`;renderIncludes();renderProcess();renderDetails();renderFor();document.getElementById('result-text').innerHTML=d('result');renderFaq('sp-faq-list',d('spFaq'));renderFaq('gen-faq-list',d('genFaq'));}
+function renderIncludes(){const g=document.getElementById('includes-grid');g.innerHTML='';d('includes').forEach(it=>{const div=document.createElement('div');div.className='include-item';div.innerHTML=`<div class="include-icon">${it.icon}</div><div class="include-label">${it.label}</div><div class="include-desc">${it.desc}</div>`;g.appendChild(div);});}
+function renderProcess(){const g=document.getElementById('process-grid');g.innerHTML='';d('process').forEach(it=>{const div=document.createElement('div');div.className='process-step';div.innerHTML=`<div class="process-label">${it.label}</div><div class="process-desc">${it.desc}</div>`;g.appendChild(div);});}
+function renderDetails(){const l=document.getElementById('detail-list');l.innerHTML='';d('details').forEach(it=>{const div=document.createElement('div');div.className='detail-row';div.innerHTML=`<div class="detail-key">${it.k}</div><div class="detail-val">${it.v}</div>`;l.appendChild(div);});}
+function renderFor(){const ul=document.getElementById('for-list');ul.innerHTML='';d('forWhom').forEach(it=>{const li=document.createElement('li');li.textContent=it;ul.appendChild(li);});}
+function renderFaq(id,items){const list=document.getElementById(id);list.innerHTML='';items.forEach(it=>{const item=document.createElement('div');item.className='faq-item';item.innerHTML=`<button class="faq-q" aria-expanded="false"><span>${it.q}</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a">${it.a}</div>`;item.querySelector('.faq-q').addEventListener('click',()=>{const open=item.classList.toggle('open');item.querySelector('.faq-q').setAttribute('aria-expanded',open);});list.appendChild(item);});}
+document.querySelectorAll('.lang-btn').forEach(btn=>{btn.addEventListener('click',()=>applyLang(btn.dataset.lang));});
+applyLang(lang);
+</script>
